@@ -1,7 +1,6 @@
-// import logo from './logo.svg';
 import React from 'react';
-import CardEditor from './CardEditor';
-import CardViewer from './CardViewer';
+import CardEditor from './CardEditor.js';
+import CardViewer from './CardViewer.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,28 +17,30 @@ class App extends React.Component {
   addCard = card => {
     const cards = this.state.cards.slice().concat(card);
     this.setState({ cards });
-  };
+  }
 
   deleteCard = index => {
     const cards = this.state.cards.slice();
     cards.splice(index, 1);
-    this.setState({ cards });
-  };
+    this.setState({cards});
+  }
 
   switchMode = () => this.setState({ editor: !this.state.editor });
 
-  render() {
+  render () {
     if (this.state.editor) {
-      return (
-        <CardEditor 
-          addCard={this.addCard} 
-          cards={this.state.cards} 
-          deleteCard={this.deleteCard}
-          switchMode={this.switchMode}
-      />
-      );
+      return(
+      <CardEditor 
+        addCard={this.addCard} 
+        cards={this.state.cards}
+        deleteCard={this.deleteCard} 
+        switchMode={this.switchMode}
+        />);
     } else {
-      return <CardViewer switchMode={this.switchMode}/>;
+      return(<CardViewer
+        cards={this.state.cards}
+        switchMode={this.switchMode}
+      />)
     }
   }
 }
