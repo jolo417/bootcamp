@@ -48,7 +48,7 @@ class CardViewer extends React.Component {
         <table>
           <tbody>
             <tr>
-              <td id='cardWindow' colSpan='3' onClick={this.handleFlipCard}>
+              <td onClick={this.handleFlipCard}>
                 {card}
               </td>
             </tr>
